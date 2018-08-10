@@ -23,6 +23,7 @@ public class MS_Client
 		MS_Client client = new MS_Client();
 		client.checkCommandLineInput(args);
 		client.connectToServer();
+		//System.out.println("waiting data: " + client.checkWaitingData());
 		client.sendSomething();
 		//client.getUserInput();
 	}
@@ -40,6 +41,40 @@ public class MS_Client
 		}
 	}
 
+	public boolean checkWaitingData()
+	{	
+		boolean waitingData = false;
+		if(dataInputStream == null){
+			try
+			{
+				dataInputStream = new DataInputStream(socket.getInputStream());
+				System.out.println("Opening input stream");
+			}
+			catch(Exception e)
+			{		
+				System.err.println(e);
+				System.err.println("error");
+			}
+		}
+		try
+		{
+			if(dataInputStream.available()>0)
+			{
+				waitingData = true;	
+				System.out.println("bytes available: " + dataInputStream.available());
+			}
+			else
+			{
+				System.out.println("No bytes available");
+			}
+		}
+		catch(Exception e)
+		{		
+			System.err.println(e);
+			System.err.println("error");
+		}
+		return waitingData;
+	}
 
 	public void connectToServer()
 	{
