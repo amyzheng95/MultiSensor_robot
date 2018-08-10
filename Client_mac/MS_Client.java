@@ -23,9 +23,7 @@ public class MS_Client
 		MS_Client client = new MS_Client();
 		client.checkCommandLineInput(args);
 		client.connectToServer();
-		//System.out.println("waiting data: " + client.checkWaitingData());
 		client.sendSomething();
-		//client.getUserInput();
 	}
 
 	public void checkCommandLineInput(String[] args)
@@ -168,30 +166,3 @@ public class MS_Client
 		}
 
 	}
-/*	
-	public void askForCommand()
-	{
-		try
-		{
-			//System.out.println("Send a command to the Server:");
-			//String userInput = inReader.readLine();
-			//writer.write(userInput);
-			//writer.newLine(); 
-			//writer.flush();
-		}
-		catch(IOException ex)
-		{}
-	}
-
-*/
-			/*
-			System.out.println("Welcome to the MultiSensor Robot Server");
-			System.out.println("Menu");
-			System.out.println("s - get sensor values");
-			System.out.println("f - go straight");
-			System.out.println("b - go backwards");
-			System.out.println("l - go left");
-			System.out.println("r - go right");
-			System.out.println("p - take a pic");	
-			*/
-}
